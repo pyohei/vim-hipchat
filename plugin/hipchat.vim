@@ -8,17 +8,6 @@ endif
 let s:save_cpo = &cpoptions
 set cpo&vim
 
-" Add function
-"   - room name(number)
-"   - from Time
-"   - number of comment
-"       insert list and get nessesary submot
-"       
-"   - message template
-"       ---------------------
-"       UNKNOW: 2013/12/12 11:11:11
-"       message~~~~~~~
-"       tefdsaffdafdaffda
 function! DispHipChat(count)
     let l:result = webapi#http#get(g:HIPCHAT)
     let l:contents = webapi#json#decode(result.content)
