@@ -1,4 +1,5 @@
 
+
 " movet to autoload
 if !exists('g:HIPCHAT')
     echo 'You have no setting hipchat URL'
@@ -34,6 +35,23 @@ function! DispHipChat(count)
         echon ':' . l:s.date
         echo l:s.message
         echo '--------------------------------------'
+    endfor
+endfunction
+
+function! MakeUrlBase()
+    let l:url = 'https://' . g:HIPCHAT_DOMAIN
+    return l:url
+endfunction
+
+function! GetRooms()
+    let l:baseurl = MakeUrlBase()
+    let l:url = l:baseurl . '/v2/room'
+    let l:url = l:url . '?auth_token=' . g:HIPCHAT_TOKEN
+    let l:result = webapi#http#get(l:url)
+    let l:contents = webapi#json#decode(l:result.content)
+    for l:room in l:contents['items']
+        echo 'id: ' . l:room.id
+        echo 'name: ' . l:room.name
     endfor
 endfunction
 
