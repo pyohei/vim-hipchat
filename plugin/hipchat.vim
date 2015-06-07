@@ -2,7 +2,6 @@
 " Hip Chat API document is
 "   https://www.hipchat.com/docs/apiv2
 
-" movet to autoload
 if !exists('g:HIPCHAT')
     echo 'You have no setting hipchat URL'
     finish
