@@ -27,21 +27,31 @@ function! DispHipChat(count)
         call insert(l:submits, l:submit, 0)
     endfor
     let l:num = 0 
+    execute 'buffer' . 1
+    nnoremap <buffer>q :q!<CR>
     for l:s in l:submits
         if a:count == l:num
             break
         endif
+        call setline(l:num, l:s.message)
         let l:num += 1
-        echo l:s.name
-        echon ':' . l:s.date
-        echo l:s.message
-        echo '--------------------------------------'
+        "echo l:s.name
+        "echon ':' . l:s.date
+        "echo l:s.message
+        "echo '--------------------------------------'
     endfor
 endfunction
 
 function! MakeUrlBase()
     let l:url = 'https://' . g:HIPCHAT_DOMAIN
     return l:url
+endfunction
+
+function! OpenBuffer()
+    let l:buf_name = 'hip-rooms'
+    execute 'buffer' . 1
+    call setline(1, 'hogehoge')
+    echo fnamemodify(bufname('%s'), ':p')
 endfunction
 
 function! GetRooms()
