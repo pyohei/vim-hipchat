@@ -28,7 +28,7 @@ function! DispHipChat(count)
     endfor
     let l:num = 0 
     execute 'buffer' . 1
-    nnoremap <buffer>q :q!<CR>
+    nnoremap <buffer><silent>q <expr>:bd!<CR>
     for l:s in l:submits
         if a:count == l:num
             break
