@@ -28,6 +28,9 @@ function! DispHipChat(count)
     endfor
     let l:num = 0 
     execute 'buffer' . 1
+    execute bufwinnr(1) . 'wincmd w'
+    "setlocal nomodifiable
+    setlocal readonly
     nnoremap <buffer><silent>q <expr>:bd!<CR>
     for l:s in l:submits
         if a:count == l:num
