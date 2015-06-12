@@ -27,10 +27,10 @@ function! DispHipChat(count)
         call insert(l:submits, l:submit, 0)
     endfor
     let l:num = 0 
-    execute 'buffer' . 1
-    execute bufwinnr(1) . 'wincmd w'
-    "setlocal nomodifiable
-    setlocal readonly
+    "silent execute 'silent edit'
+    enew
+    "execute 'buffer' . 1
+    "execute bufwinnr(1) . 'wincmd w'
     nnoremap <buffer><silent>q <expr>:bd!<CR>
     for l:s in l:submits
         if a:count == l:num
@@ -43,6 +43,8 @@ function! DispHipChat(count)
         "echo l:s.message
         "echo '--------------------------------------'
     endfor
+    setlocal nomodifiable
+    setlocal readonly
 endfunction
 
 function! MakeUrlBase()
