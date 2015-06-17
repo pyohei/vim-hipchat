@@ -6,12 +6,12 @@ let s:save_cpo = &cpoptions
 set cpo&vim
 
 function! request#getRooms()
-    let l:header_len = 12
     let l:room_url = '/v2/room'
     let l:baseurl = s:make_url_base()
     let l:baseurl .=  l:room_url
     let l:url = s:add_token(l:baseurl)
-    let l:result = s:open_url(l:url)
+    let l:response= s:open_url(l:url)
+    let l:result = s:decode(l:response.content)
     return l:result
 endfunction
 
@@ -31,6 +31,11 @@ endfunction
 
 function! s:open_url(url)
     let l:result = webapi#http#get(a:url)
+    return l:result
+endfunction
+
+function! s:decode(response)
+    let l:result = webapi#json#decode(a:response)
     return l:result
 endfunction
 
