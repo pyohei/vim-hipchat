@@ -61,11 +61,7 @@ endfunction
 
 function! GetRooms()
     let l:header_len = 12
-    let l:baseurl = MakeUrlBase()
-    let l:url = l:baseurl . '/v2/room'
-    let l:url = l:url . '?auth_token=' . g:HIPCHAT_TOKEN
-    let l:result = webapi#http#get(l:url)
-    let l:contents = webapi#json#decode(l:result.content)
+    let l:contents = request#getRooms()
     enew
     nnoremap <buffer><silent>q <expr>:bd!<CR>
     let l:num = 0
@@ -132,6 +128,10 @@ function! TmpDispHipChat(cur_line) " setting with argment
     endfor
     setlocal nomodifiable
     setlocal readonly
+endfunction
+
+function! HipDebug()
+    return request#getRooms()
 endfunction
 
 let &cpo = s:save_cpo
