@@ -62,8 +62,7 @@ endfunction
 function! GetRooms()
     let l:header_len = 12
     let l:contents = request#getRooms()
-    enew
-    nnoremap <buffer><silent>q <expr>:bd!<CR>
+    call buffer#open()
     let l:num = 0
     for l:room in l:contents['items']
         "let l:line = strlen(substitute(l:room.name, ".", "x", "g")) . l:room.name
@@ -79,8 +78,7 @@ function! GetRooms()
         let l:num += 1
     endfor
     nnoremap <buffer><silent><CR> :call TmpDispHipChat(getline("."))<CR>
-    setlocal nomodifiable
-    setlocal readonly
+    call buffer#set_buffer()
 endfunction
 
 function! GetRoomMessage(cur_line)
