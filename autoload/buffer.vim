@@ -1,6 +1,6 @@
-"
-" Hip Chat API document is
-"   https://www.hipchat.com/docs/apiv2
+" 
+" 
+" 
 
 let s:save_cpo = &cpoptions
 set cpo&vim
@@ -10,6 +10,20 @@ function! SetLocalBuf()
 endfunction
 
 function! buffer#open()
+    enew
+    call s:set_buffer_default()
+endfunction
+
+function! s:set_buffer_default()
+    nnoremap <buffer><silent>q <expr>:bd!<CR>
+endfunction
+
+function! buffer#set_buffer()
+    setlocal nomodifiable
+    setlocal readonly
+endfunction
+
+function! buffer#write()
     return
 endfunction
 
