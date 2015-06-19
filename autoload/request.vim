@@ -1,6 +1,6 @@
 "
-" Hip Chat API document is
-"   https://www.hipchat.com/docs/apiv2
+" 
+" Request functions.
 
 let s:save_cpo = &cpoptions
 set cpo&vim
@@ -15,8 +15,13 @@ function! request#getRooms()
     return l:result
 endfunction
 
-function! request#getHistory()
-    return
+function! request#getHistory(id)
+    let l:baseurl = s:make_url_base()
+    let l:baseurl .= '/v2/room/' . a:id . '/history/latest'
+    let l:url = s:add_token(l:baseurl)
+    let l:response= s:open_url(l:url)
+    let l:result = s:decode(l:response.content)
+    return l:result
 endfunction
 
 function! s:make_url_base()
