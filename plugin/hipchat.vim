@@ -1,6 +1,11 @@
 "
 " Hip Chat API document is
 "   https://www.hipchat.com/docs/apiv2
+"
+"   TODO: buffer writer
+"         setting local buffer
+"         make main process
+"
 
 if !exists('g:HIPCHAT')
     echo 'You have no setting hipchat URL'
@@ -38,25 +43,9 @@ function! DispHipChat(count)
         endif
         call setline(l:num, l:s.message)
         let l:num += 1
-        "echo l:s.name
-        "echon ':' . l:s.date
-        "echo l:s.message
-        "echo '--------------------------------------'
     endfor
     setlocal nomodifiable
     setlocal readonly
-endfunction
-
-function! MakeUrlBase()
-    let l:url = 'https://' . g:HIPCHAT_DOMAIN
-    return l:url
-endfunction
-
-function! OpenBuffer()
-    let l:buf_name = 'hip-rooms'
-    execute 'buffer' . 1
-    call setline(1, 'hogehoge')
-    echo fnamemodify(bufname('%s'), ':p')
 endfunction
 
 function! GetRooms()
@@ -81,17 +70,9 @@ function! GetRooms()
     call buffer#set_buffer()
 endfunction
 
-function! GetRoomMessage(cur_line)
-    let l:id = split(a:cur_line, " ")[0]
-    let l:url = MakeUrlBase()
-    let l:url .= '/v2/room/' . l:id . '/history/latest?auth_token=' . g:HIPCHAT_TOKEN
-    return l:url
-endfunction
-
 function! TmpDispHipChat(cur_line) " setting with argment
-    let l:url = GetRoomMessage(a:cur_line)
-    let l:result = webapi#http#get(l:url)
-    let l:contents = webapi#json#decode(result.content)
+    let l:id = split(a:cur_line, " ")[0]
+    let l:contents = request#getHistory(l:id)
     let l:items = l:contents.items
     let l:submits = []
     for l:item in l:items
@@ -119,17 +100,13 @@ function! TmpDispHipChat(cur_line) " setting with argment
 
         call setline(l:num, l:s.message)
         let l:num += 1
-        "echo l:s.name
-        "echon ':' . l:s.date
-        "echo l:s.message
-        "echo '--------------------------------------'
     endfor
     setlocal nomodifiable
     setlocal readonly
 endfunction
 
 function! HipDebug()
-    return request#getRooms()
+    return request#getHistory(892922)
 endfunction
 
 let &cpo = s:save_cpo
