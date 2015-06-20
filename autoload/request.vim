@@ -1,6 +1,11 @@
+" ----------------------------------------------------------------------
+" HipChat plugin >> request
+" Version: 0.0.0
+" Author: Phoohei
+" Licence: MTI Licence
 "
-" 
-" Request functions.
+" HipChat API DOCUMENT: https://www.hipchat.com/docs/apiv2
+" ----------------------------------------------------------------------
 
 let s:save_cpo = &cpoptions
 set cpo&vim
