@@ -26,39 +26,6 @@ endif
 let s:save_cpo = &cpoptions
 set cpo&vim
 
-function! DispHipChat(count)
-    let l:result = webapi#http#get(g:HIPCHAT)
-    let l:contents = webapi#json#decode(result.content)
-    let l:items = l:contents.items
-    let l:submits = []
-    for l:item in l:items
-        let l:submit = {}
-        if type(l:item.from) == 1
-            let l:submit['name'] = l:item.from
-        else
-            let l:submit['name'] = l:item.from.name
-        endif
-        let l:submit['date'] =  l:item.date
-        let l:submit['message'] = l:item.message
-        call insert(l:submits, l:submit, 0)
-    endfor
-    let l:num = 0 
-    "silent execute 'silent edit'
-    enew
-    "execute 'buffer' . 1
-    "execute bufwinnr(1) . 'wincmd w'
-    nnoremap <buffer><silent>q <expr>:bd!<CR>
-    for l:s in l:submits
-        if a:count == l:num
-            break
-        endif
-        call setline(l:num, l:s.message)
-        let l:num += 1
-    endfor
-    setlocal nomodifiable
-    setlocal readonly
-endfunction
-
 function! GetRooms()
     let l:header_len = 12
     let l:contents = request#getRooms()
