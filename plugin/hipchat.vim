@@ -18,6 +18,8 @@ if !exists('g:HIPCHAT')
     finish
 endif
 
+echo '1!'
+
 let s:save_cpo = &cpoptions
 set cpo&vim
 
@@ -111,9 +113,16 @@ function! TmpDispHipChat(cur_line) " setting with argment
     setlocal readonly
 endfunction
 
+" ----* Debug  *----
+
 function! HipDebug()
     return request#getHistory(892922)
 endfunction
+
+" ----* Main process *----
+
+command! -nargs=0 HipRoom call GetRooms()
+
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
