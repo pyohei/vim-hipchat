@@ -1,11 +1,17 @@
+" ----------------------------------------------------------------------
+" HipChat API operation.
+" Version: 0.0.0
+" Author: Phoohei
+" Licence: MTI Licence
 "
-" Hip Chat API document is
-"   https://www.hipchat.com/docs/apiv2
+" HipChat API DOCUMENT: https://www.hipchat.com/docs/apiv2
+" ----------------------------------------------------------------------
 "
 "   TODO: buffer writer
 "         setting local buffer
 "         make main process
 "
+" ----------------------------------------------------------------------
 
 if !exists('g:HIPCHAT')
     echo 'You have no setting hipchat URL'
