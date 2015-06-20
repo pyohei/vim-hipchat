@@ -1,5 +1,11 @@
-" 
-" 
+" ----------------------------------------------------------------------
+" hipchat plugin >> buffer
+" Version: 0.0.0
+" Author: Pyoohei
+" Licence: MTI Licence
+"
+" HipChat API DOCUMENT: https://www.hipchat.com/docs/apiv2
+" ----------------------------------------------------------------------
 " 
 
 let s:save_cpo = &cpoptions
