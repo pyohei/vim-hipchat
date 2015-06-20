@@ -9,16 +9,19 @@
 "
 "   TODO: buffer writer
 "         setting local buffer
-"         make main process
 "
-" ----------------------------------------------------------------------
+"  ---- Default Settings ----
+"  g:HIPCHAT_DOMAIN
+"  g:HIPCHAT_TOKEN
 
-if !exists('g:HIPCHAT')
-    echo 'You have no setting hipchat URL'
+if !exists('g:HIPCHAT_TOKEN') || !exists('g:HIPCHAT_DOMAIN')
+    echo '----------------------------------------------------'
+    echo '[ERROR] vim-hipchat '
+    echo '  You need below variabules in your `.vimrc`! *~~~~'
+    echo '      `let g:HIPCHAT_TOKEN` ... Your HipChat Token.'
+    echo '      `let g:HIPCHAT_DOMEIN` ... Your HipChat API Domain'
     finish
 endif
-
-echo '1!'
 
 let s:save_cpo = &cpoptions
 set cpo&vim
