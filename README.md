@@ -9,7 +9,9 @@ You have to set url information in your .vimrc.
     g:HIPCHAT_TOKEN   " Your HipChat Token
     
 After setting, you can start below command.  
-      `:HipRoom`
+```vim
+:HipRoom
+```
 
 This room display your hipchat rooms.  
 You can confirm your messages after you enter your room name.  
