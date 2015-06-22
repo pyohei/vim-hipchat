@@ -20,4 +20,4 @@ You can confirm your messages after you enter your room name.
 
 ##Licence
 * MIT
-  * see LICENSE
+  * see [LICENSE](https://github.com/pyohei/vim-hipchat/blob/master/LICENSE)
