@@ -5,8 +5,10 @@ HipChat Plugin for vim.
 
 ##Usage
 You have to set url information in your .vimrc.
-    g:HIPCHAT_DOMAIN  " Your HipChat Domain name
-    g:HIPCHAT_TOKEN   " Your HipChat Token
+```vim
+g:HIPCHAT_DOMAIN  " Your HipChat Domain name
+g:HIPCHAT_TOKEN   " Your HipChat Token
+```
     
 After setting, you can start below command.  
 ```vim
