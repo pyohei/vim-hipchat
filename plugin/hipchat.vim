@@ -8,7 +8,7 @@
 " ----------------------------------------------------------------------
 "
 "   TODO: buffer writer
-"         setting local buffer
+"         Display submit name and make newline between messages.
 "
 "  ---- Default Settings ----
 "  g:HIPCHAT_DOMAIN
