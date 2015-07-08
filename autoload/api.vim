@@ -27,6 +27,8 @@ function! api#get_rooms()
     endfor
     nnoremap <buffer><silent><CR> :call api#get_messages(getline("."))<CR>
     call buffer#set_buffer()
+    nnoremap <buffer><silent>q <expr>:bd!<CR>
+    setlocal modifiable
 endfunction
 
 function! api#get_messages(cur_line) " setting with argment
@@ -50,7 +52,9 @@ function! api#get_messages(cur_line) " setting with argment
     enew
     "execute 'buffer' . 1
     "execute bufwinnr(1) . 'wincmd w'
+    
     nnoremap <buffer><silent>q <expr>:bd!<CR>
+    "nnoremap <buffer><silent>q <expr>:wincmd =<CR>
     for l:s in l:submits
         "if a:count == l:num
         "    break
@@ -60,7 +64,7 @@ function! api#get_messages(cur_line) " setting with argment
         call setline(l:num, l:s.message)
         let l:num += 1
     endfor
-    setlocal nomodifiable
+    setlocal modifiable
     setlocal readonly
 endfunction
 
