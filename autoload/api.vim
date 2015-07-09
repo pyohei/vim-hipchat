@@ -47,7 +47,7 @@ function! api#get_messages(cur_line) " setting with argment
         let l:submit['message'] = l:item.message
         call insert(l:submits, l:submit, 0)
     endfor
-    let l:num = 0 
+    let l:num = 1 
     "silent execute 'silent edit'
     enew
     "execute 'buffer' . 1
@@ -61,6 +61,16 @@ function! api#get_messages(cur_line) " setting with argment
         " endif
         " treat for JIRA checket!
 
+        " Header
+        call setline(l:num, '-----------------')
+        let l:num += 1
+
+        " Name
+        let l:name_line = '### ' . l:s.name . ' ### (' . l:s.date . ')'
+        call setline(l:num, l:name_line) 
+        let l:num += 1
+
+        " Name
         call setline(l:num, l:s.message)
         let l:num += 1
     endfor
