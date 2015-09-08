@@ -1,7 +1,7 @@
 " ----------------------------------------------------------------------
 " hipchat plugin >> buffer
 " Version: 0.0.0
-" Author: Pyoohei
+" Author: Shohei Mukai
 " Licence: MTI Licence
 "
 " HipChat API DOCUMENT: https://www.hipchat.com/docs/apiv2

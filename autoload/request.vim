@@ -1,7 +1,7 @@
 " ----------------------------------------------------------------------
 " HipChat plugin >> request
 " Version: 0.0.0
-" Author: Phoohei
+" Author: Shohei Mukai
 " Licence: MTI Licence
 "
 " HipChat API DOCUMENT: https://www.hipchat.com/docs/apiv2
