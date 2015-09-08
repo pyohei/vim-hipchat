@@ -19,7 +19,7 @@ if !exists('g:HIPCHAT_TOKEN') || !exists('g:HIPCHAT_DOMAIN')
     echo '[ERROR] vim-hipchat '
     echo '  You need below variabules in your `.vimrc`! *~~~~'
     echo '      `let g:HIPCHAT_TOKEN` ... Your HipChat Token.'
-    echo '      `let g:HIPCHAT_DOMEIN` ... Your HipChat API Domain'
+    echo '      `let g:HIPCHAT_DOMAIN` ... Your HipChat API Domain'
     finish
 endif
 
