@@ -73,6 +73,24 @@ function! api#get_messages(cur_line) " setting with argment
 
         " Name
         for l:message in l:s.messages
+            if l:s.name == 'JIRA'
+                let l:message = 'This is JIRA CHICKET!!'
+                call setline(l:num, l:message)
+                let l:num += 1
+                break
+            endif
+            if l:s.name == 'Bitbucket'
+                let l:message = 'This is Bitbucket action!'
+                call setline(l:num, l:message)
+                let l:num += 1
+                break
+            endif
+            if l:s.name == 'Jenkins'
+                let l:message = 'This is Jenkins action!'
+                call setline(l:num, l:message)
+                let l:num += 1
+                break
+            endif
             call setline(l:num, l:message)
             let l:num += 1
         endfor
