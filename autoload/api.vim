@@ -44,7 +44,8 @@ function! api#get_messages(cur_line) " setting with argment
             let l:submit['name'] = l:item.from.name
         endif
         let l:submit['date'] =  l:item.date
-        let l:submit['message'] = l:item.message
+        let l:submit['messages'] = split(strtrans(l:item.message), '\^@')
+        " let l:submit['message'] = l:item.message
         call insert(l:submits, l:submit, 0)
     endfor
     let l:num = 1 
@@ -71,8 +72,10 @@ function! api#get_messages(cur_line) " setting with argment
         let l:num += 1
 
         " Name
-        call setline(l:num, l:s.message)
-        let l:num += 1
+        for l:message in l:s.messages
+            call setline(l:num, l:message)
+            let l:num += 1
+        endfor
     endfor
     setlocal modifiable
     setlocal readonly
