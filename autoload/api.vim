@@ -74,10 +74,33 @@ function! api#get_messages(cur_line) " setting with argment
         " Name
         for l:message in l:s.messages
             if l:s.name == 'JIRA'
-                let l:message = 'This is JIRA CHICKET!!'
+                let l:jirastr = '<div>' . l:message . '</div>'
+                let l:hoge = webapi#xml#parse(l:jirastr)
+                echo l:hoge
+                break
                 call setline(l:num, l:message)
                 let l:num += 1
-                break
+                "" while len(l:jirastr) > 0
+                ""     let l:pat = '^<.\{-}>'
+                ""     let l:hoge = matchstr(l:jirastr, l:pat)
+                ""     if len(l:hoge) == 0
+                ""         break
+                ""     endif
+                ""     echo '----'
+                ""     echo l:hoge
+                ""     let l:jirastr = l:jirastr[stridx(l:jirastr, l:hoge) + len(l:hoge):]
+                ""     echo '====='
+                ""     echo l:jirastr
+                ""     " call setline(l:num, l:message)
+                ""     let l:num += 1
+                "" endwhile
+                "" break
+                    " let l:pat = '<.\{-}>'
+                    " let l:hoge = matchstr(l:message, l:pat)
+                    " echo l:hoge
+                    " let l:message = 'This is JIRA CHICKET!!'
+                    " call setline(l:num, l:message)
+                    " let l:num += 1
             endif
             if l:s.name == 'Bitbucket'
                 let l:message = 'This is Bitbucket action!'
