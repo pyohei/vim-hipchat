@@ -74,11 +74,21 @@ function! api#get_messages(cur_line) " setting with argment
         " Name
         for l:message in l:s.messages
             if l:s.name == 'JIRA'
+                " Add div tag to make dom tree
+                echo l:message
+                let l:pat = '^<img'
+                echo match(l:message, l:pat)
+                if match(l:message, l:pat) == -1
+                    break
+                endif
                 let l:jirastr = '<div>' . l:message . '</div>'
-                let l:hoge = webapi#xml#parse(l:jirastr)
-                echo l:hoge
-                break
-                call setline(l:num, l:message)
+                let l:jira_trees = webapi#xml#parse(l:jirastr)
+                "echo '----------'
+                "echo l:message
+                "echo l:jira_trees
+                let l:chicket_name = l:jira_trees.child[2].child[0].child[0]
+                echo l:chicket_name
+                call setline(l:num, l:chicket_name)
                 let l:num += 1
                 "" while len(l:jirastr) > 0
                 ""     let l:pat = '^<.\{-}>'
@@ -101,21 +111,23 @@ function! api#get_messages(cur_line) " setting with argment
                     " let l:message = 'This is JIRA CHICKET!!'
                     " call setline(l:num, l:message)
                     " let l:num += 1
-            endif
-            if l:s.name == 'Bitbucket'
-                let l:message = 'This is Bitbucket action!'
+            elseif l:s.name == 'Bitbucket'
+                let l:jirastr = '<div>' . l:message . '</div>'
+                let l:hoge = webapi#xml#parse(l:jirastr)
+                let l:branch_name = l:hoge.child[2].attr.href
+                let l:message = 'REPOGITORY: ' . l:branch_name
                 call setline(l:num, l:message)
                 let l:num += 1
                 break
-            endif
-            if l:s.name == 'Jenkins'
+            elseif l:s.name == 'Jenkins'
                 let l:message = 'This is Jenkins action!'
                 call setline(l:num, l:message)
                 let l:num += 1
                 break
+            else
+                call setline(l:num, l:message)
+                let l:num += 1
             endif
-            call setline(l:num, l:message)
-            let l:num += 1
         endfor
     endfor
     setlocal modifiable
