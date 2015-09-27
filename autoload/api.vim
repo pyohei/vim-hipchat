@@ -84,27 +84,6 @@ function! api#get_messages(cur_line) " setting with argment
                 let l:chicket_name = l:jira_trees.child[2].child[0].child[0]
                 call setline(l:num, l:chicket_name)
                 let l:num += 1
-                "" while len(l:jirastr) > 0
-                ""     let l:pat = '^<.\{-}>'
-                ""     let l:hoge = matchstr(l:jirastr, l:pat)
-                ""     if len(l:hoge) == 0
-                ""         break
-                ""     endif
-                ""     echo '----'
-                ""     echo l:hoge
-                ""     let l:jirastr = l:jirastr[stridx(l:jirastr, l:hoge) + len(l:hoge):]
-                ""     echo '====='
-                ""     echo l:jirastr
-                ""     " call setline(l:num, l:message)
-                ""     let l:num += 1
-                "" endwhile
-                "" break
-                    " let l:pat = '<.\{-}>'
-                    " let l:hoge = matchstr(l:message, l:pat)
-                    " echo l:hoge
-                    " let l:message = 'This is JIRA CHICKET!!'
-                    " call setline(l:num, l:message)
-                    " let l:num += 1
             elseif l:s.name == 'Bitbucket'
                 let l:jirastr = '<div>' . l:message . '</div>'
                 let l:hoge = webapi#xml#parse(l:jirastr)
