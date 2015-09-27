@@ -74,20 +74,14 @@ function! api#get_messages(cur_line) " setting with argment
         " Name
         for l:message in l:s.messages
             if l:s.name == 'JIRA'
-                " Add div tag to make dom tree
-                echo l:message
+                " Check if chicket name or not
                 let l:pat = '^<img'
-                echo match(l:message, l:pat)
                 if match(l:message, l:pat) == -1
                     break
                 endif
                 let l:jirastr = '<div>' . l:message . '</div>'
                 let l:jira_trees = webapi#xml#parse(l:jirastr)
-                "echo '----------'
-                "echo l:message
-                "echo l:jira_trees
                 let l:chicket_name = l:jira_trees.child[2].child[0].child[0]
-                echo l:chicket_name
                 call setline(l:num, l:chicket_name)
                 let l:num += 1
                 "" while len(l:jirastr) > 0
