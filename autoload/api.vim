@@ -93,7 +93,6 @@ function! api#get_messages(cur_line) " setting with argment
                 let l:num += 1
                 break
             elseif l:s.name == 'Jenkins'
-                let l:message = 'This is Jenkins action!'
                 call setline(l:num, l:message)
                 let l:num += 1
                 break
