@@ -89,6 +89,7 @@ function! api#get_messages(cur_line) " setting with argment
                 let l:hoge = webapi#xml#parse(l:jirastr)
                 let l:branch_name = l:hoge.child[2].attr.href
                 let l:message = 'REPOGITORY: ' . l:branch_name
+                echo l:message
                 call setline(l:num, l:message)
                 let l:num += 1
                 break
