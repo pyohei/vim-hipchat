@@ -14,6 +14,10 @@
 "  g:HIPCHAT_DOMAIN
 "  g:HIPCHAT_TOKEN
 
+if exists('g:HIPCHAT_OFF')
+    finish
+endif
+
 if !exists('g:HIPCHAT_TOKEN') || !exists('g:HIPCHAT_DOMAIN')
     echo '----------------------------------------------------'
     echo '[ERROR] vim-hipchat '
