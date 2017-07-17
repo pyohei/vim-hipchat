@@ -1,9 +1,9 @@
-#HipCaht Vim Plugin
+# HipCaht Vim Plugin
 
-##About
+## About
 HipChat Plugin for vim.  
 
-##Usage
+## Usage
 You have to set url information in your .vimrc.
 ```vim
 g:HIPCHAT_DOMAIN  " Your HipChat Domain name
@@ -18,6 +18,6 @@ After setting, you can start below command.
 This room display your hipchat rooms.  
 You can confirm your messages after you enter your room name.  
 
-##Licence
+## Licence
 * MIT
   * see [LICENSE](https://github.com/pyohei/vim-hipchat/blob/master/LICENSE)
