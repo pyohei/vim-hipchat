@@ -17,6 +17,7 @@ After setting, you can start below command.
 
 This room display your hipchat rooms.  
 You can confirm your messages after you enter your room name.  
+You can only look with this plugin(not write comment.).  
 
 ##Licence
 * MIT
